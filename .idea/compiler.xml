@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="collections" />
+        <module name="exceptions" />
+        <module name="intro" />
+        <module name="jdbc" />
+        <module name="multithreading" />
+        <module name="oop" />
+        <module name="operators" />
+        <module name="procedures" />
+        <module name="streams" />
+        <module name="strings" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="collections" target="9" />
+      <module name="exceptions" target="9" />
+      <module name="intro" target="9" />
+      <module name="java_fundamentals" target="9" />
+      <module name="jdbc" target="9" />
+      <module name="multithreading" target="9" />
+      <module name="oop" target="9" />
+      <module name="operators" target="9" />
+      <module name="procedures" target="9" />
+      <module name="streams" target="9" />
+      <module name="strings" target="9" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
