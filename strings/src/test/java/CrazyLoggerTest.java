@@ -22,7 +22,6 @@ class CrazyLoggerTest {
         cl.log("Test");
         cl.log("Hello");
         cl.log("Search");
-        cl.log("Logging");
 
         System.out.println(Arrays.toString(cl.search("e")));
     }

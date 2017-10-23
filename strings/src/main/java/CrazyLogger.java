@@ -34,14 +34,4 @@ public class CrazyLogger {
         for (StringBuilder s : log) fw.write(s.toString());
         fw.close();
     }
-
-    public static void main(String[] args) throws IOException {
-        CrazyLogger cl = new CrazyLogger();
-        cl.log("Hello");
-        cl.log("Hell");
-        cl.log("Helo");
-        cl.log("Helo");
-        cl.log("Hllo");
-        cl.writeInFile();
-    }
 }
