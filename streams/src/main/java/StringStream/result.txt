@@ -1,0 +1,11 @@
+char 1
+class 1
+import 3
+new 3
+package 1
+public 2
+return 1
+static 3
+throws 2
+void 1
+while 1
