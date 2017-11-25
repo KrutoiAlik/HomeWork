@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions>
+    <transaction>
+        <src_name>Безмощук Алексей</src_name>
+        <dst_name>Безмощук Дмитрий</dst_name>
+        <bill>5000</bill>
+    </transaction>
+    <transaction>
+        <src_name>John Snow</src_name>
+        <dst_name>Targarien</dst_name>
+        <bill>19898</bill>
+    </transaction>
+    <transaction>
+        <src_name>Ph.D</src_name>
+        <dst_name>Atroce</dst_name>
+        <bill>88888</bill>
+    </transaction>
+    <transaction>
+        <src_name>Kiel</src_name>
+        <dst_name>Alice</dst_name>
+        <bill>50000</bill>
+    </transaction>
+</transactions>
