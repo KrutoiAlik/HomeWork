@@ -76,9 +76,14 @@ class IntegerSetterGetter extends Thread {
             number = resource.getElement();
 
             while (number == null) {
-                System.out.println("Поток " + getName() + " ждет пока очередь заполнится.");
-                resource.wait();
-                System.out.println("Поток " + getName() + " возобновил работу.");
+                resource.clickp();
+                if (resource.getClick() < 4) {
+                    System.out.println("Поток " + getName() + " ждет пока очередь заполнится.");
+                    System.out.println(resource.getClick());
+                    resource.wait();
+                    resource.clickm();
+                    System.out.println("Поток " + getName() + " возобновил работу.");
+                }
                 number = resource.getElement();
             }
             System.out.println("Поток " + getName() + " извлек число " + number);
@@ -88,7 +93,7 @@ class IntegerSetterGetter extends Thread {
     public void setIntegersFromResource() throws InterruptedException {
         Integer number = rand.nextInt(500);
 
-        synchronized (resource){
+        synchronized (resource) {
             resource.setElement(number);
             System.out.println("Поток " + getName() + " записал число " + number);
             resource.notify();
