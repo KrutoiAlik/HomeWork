@@ -10,10 +10,22 @@ import java.util.List;
 
 public class SynchronizationI {
 
+    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
+        XmlReaderToListTransactions xml = new XmlReaderToListTransactions("multithreading/src/main/resources/transaction.xml");
+        Thread t1 = new Thread(xml);
+        Thread t2 = new Thread(xml);
 
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        System.out.println(xml.getTransactions());
+    }
 }
 
-class XmlReaderToListTransactions extends Thread {
+class XmlReaderToListTransactions implements Runnable {
 
     static volatile int i = 0;
     NodeList xml;
@@ -38,5 +50,10 @@ class XmlReaderToListTransactions extends Thread {
 
     List<Transaction> getTransactions() {
         return transactions;
+    }
+
+    @Override
+    public void run() {
+        for (i = 0; i < xml.getLength(); i++) readXml();
     }
 }

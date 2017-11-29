@@ -17,7 +17,7 @@ public class Transaction {
         return new Transaction(
                 element.getElementsByTagName("src_name").item(0).getChildNodes().item(0).getNodeValue(),
                 element.getElementsByTagName("dst_name").item(0).getChildNodes().item(0).getNodeValue(),
-                element.getElementsByTagName("src_name").item(0).getChildNodes().item(0).getNodeValue());
+                element.getElementsByTagName("bill").item(0).getChildNodes().item(0).getNodeValue());
     }
 
     public String getSrcName() {
