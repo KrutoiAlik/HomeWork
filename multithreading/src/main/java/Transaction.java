@@ -1,3 +1,5 @@
+import org.w3c.dom.Element;
+
 public class Transaction {
 
     String srcName;
@@ -9,6 +11,13 @@ public class Transaction {
         this.srcName = srcName;
         this.dstName = dstName;
         this.bill = bill;
+    }
+
+    static synchronized Transaction getInstance(Element element){
+        return new Transaction(
+                element.getElementsByTagName("src_name").item(0).getChildNodes().item(0).getNodeValue(),
+                element.getElementsByTagName("dst_name").item(0).getChildNodes().item(0).getNodeValue(),
+                element.getElementsByTagName("src_name").item(0).getChildNodes().item(0).getNodeValue());
     }
 
     public String getSrcName() {

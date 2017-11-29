@@ -10,30 +10,33 @@ import java.util.List;
 
 public class SynchronizationI {
 
-    static List<Transaction> transactions = new ArrayList<>();
 
-    public static void main(String[] argv) throws Exception {
+}
 
-        NodeList nodeList = getInstance().getElementsByTagName(getInstance().getDocumentElement().getChildNodes().item(1).getNodeName());
-        readTransaction(nodeList);
-        for (Transaction t : transactions)
-            System.out.println(t.toString() + "\r\n");
+class XmlReaderToListTransactions extends Thread {
+
+    static volatile int i = 0;
+    NodeList xml;
+    List<Transaction> transactions = new ArrayList<>();
+
+    public XmlReaderToListTransactions(String s) throws IOException, SAXException, ParserConfigurationException {
+        this.xml = getXml(s);
     }
 
-    public static Document getInstance() throws ParserConfigurationException, IOException, SAXException {
-        Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse("multithreading/src/main/resources/transaction.xml");
+    private static NodeList getXml(String s) throws ParserConfigurationException, IOException, SAXException {
+        Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(s);
         document.getDocumentElement().normalize();
-        return document;
+        return document.getElementsByTagName(document.getDocumentElement().getChildNodes().item(1).getNodeName());
     }
 
-    public static void readTransaction(NodeList nodeList){
-        for (int i = 0; i < nodeList.getLength(); i++)
-            if (nodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) nodeList.item(i);
-                transactions.add(new Transaction(
-                        element.getElementsByTagName("src_name").item(0).getChildNodes().item(0).getNodeValue(),
-                        element.getElementsByTagName("dst_name").item(0).getChildNodes().item(0).getNodeValue(),
-                        element.getElementsByTagName("src_name").item(0).getChildNodes().item(0).getNodeValue()));
-            }
+    public void readXml() {
+        synchronized (xml) {
+            if (xml.item(i).getNodeType() == Node.ELEMENT_NODE)
+                transactions.add(Transaction.getInstance((Element) xml.item(i)));
+        }
+    }
+
+    List<Transaction> getTransactions() {
+        return transactions;
     }
 }

@@ -4,9 +4,22 @@ import java.util.List;
 public class SharedResource {
 
     private List<Integer> list;
+    private int click;
 
     public SharedResource() {
         this.list = new ArrayList<>();
+    }
+
+    public void clickp(){
+        click++;
+    }
+
+    public void clickm(){
+        click--;
+    }
+
+    public int getClick(){
+        return click;
     }
 
     public void setElement(Integer element) {
